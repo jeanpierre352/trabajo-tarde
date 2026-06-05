@@ -316,14 +316,14 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
       
       {/* 1. Daily marking enforcement barrier */}
       {isAlreadyMarkedToday && (
-        <div className="bg-[#FFBF00]/10 border border-[#FFBF00]/40 rounded-xl p-3.5 text-center flex flex-col items-center gap-2 animate-fadeIn">
-          <Clock className="w-8 h-8 text-[#FFBF00] animate-pulse" />
+        <div className="bg-warning/10 border border-warning/40 rounded-xl p-3.5 text-center flex flex-col items-center gap-2 animate-fadeIn">
+          <Clock className="w-8 h-8 text-warning animate-pulse" />
           <h4 className="text-xs font-black uppercase tracking-widest text-white">ASISTENCIA COMPLETA</h4>
           <p className="text-[10px] text-white/70 leading-relaxed max-w-sm">
-            Estimado <strong className="text-[#FFBF00]">{currentUser.name}</strong>, el sistema detectó que ya cuenta con un registro para el día de hoy. Solo está permitido <strong className="text-white">un registro diario de asistencia</strong>.
+            Estimado <strong className="text-warning">{currentUser.name}</strong>, el sistema detectó que ya cuenta con un registro para el día de hoy. Solo está permitido <strong className="text-white">un registro diario de asistencia</strong>.
           </p>
           {existingMarkingToday && (
-            <div className="mt-1 bg-black/45 px-3 py-1.5 rounded-lg border border-white/5 font-mono text-[9px] text-[#00FF41] flex gap-2">
+            <div className="mt-1 bg-black/45 px-3 py-1.5 rounded-lg border border-white/5 font-mono text-[9px] text-success flex gap-2">
               <span>🔔 Marcado hoy:</span>
               <span>{existingMarkingToday.entryTime}</span>
               <span>({existingMarkingToday.location})</span>
@@ -336,7 +336,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
       <div className="bg-[#121212] border border-white/10 p-3 rounded-xl space-y-2">
         <div className="flex justify-between items-center text-[9px] uppercase font-black tracking-widest text-white/50">
           <span>⚙️ Simulación y Entorno de Pruebas</span>
-          <span className="text-[#00FF41]">Modo Demo</span>
+          <span className="text-success">Modo Demo</span>
         </div>
 
         <div className="flex flex-wrap gap-2 items-center justify-between">
@@ -357,7 +357,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
                   setErrorMessage("Acceso Restringido: Te encuentras fuera del perímetro laboral autorizado.");
                 }
               }}
-              className="bg-dark-bg border border-white/15 rounded px-2 py-1 text-white text-[10px] font-semibold focus:ring-1 focus:ring-[#2200FF] focus:outline-none"
+              className="bg-dark-bg border border-white/15 rounded px-2 py-1 text-white text-[10px] font-semibold focus:ring-1 focus:ring-primary focus:outline-none"
             >
               <option value="Oficina Central">📍 Oficina Central (Dentro)</option>
               <option value="Sede Central">📍 Sede Central (Dentro)</option>
@@ -369,14 +369,14 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
             <button 
               onClick={() => setRegistryType('Entrada')}
               disabled={isAlreadyMarkedToday}
-              className={`px-3 py-1 rounded text-[8.5px] uppercase tracking-widest transition-all ${registryType === 'Entrada' ? 'bg-[#2200FF] text-white font-extrabold' : 'text-white/40'}`}
+              className={`px-3 py-1 rounded text-[8.5px] uppercase tracking-widest transition-all ${registryType === 'Entrada' ? 'bg-primary text-white font-extrabold' : 'text-white/40'}`}
             >
               Entrar
             </button>
             <button 
               onClick={() => setRegistryType('Salida')}
               disabled={isAlreadyMarkedToday}
-              className={`px-3 py-1 rounded text-[8.5px] uppercase tracking-widest transition-all ${registryType === 'Salida' ? 'bg-[#2200FF] text-white font-extrabold' : 'text-white/40'}`}
+              className={`px-3 py-1 rounded text-[8.5px] uppercase tracking-widest transition-all ${registryType === 'Salida' ? 'bg-primary text-white font-extrabold' : 'text-white/40'}`}
             >
               Salir
             </button>
@@ -387,13 +387,13 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
       {/* 2. Intelligent Biometric & SUNAT verification interface */}
       <div className="bg-[#121212] border border-white/10 rounded-xl p-4 flex flex-col gap-3">
         <div className="flex items-center gap-2 border-b border-white/5 pb-2.5">
-          <Building2 className="w-4 h-4 text-[#00FF41]" />
+          <Building2 className="w-4 h-4 text-success" />
           <h3 className="text-[10px] font-black tracking-widest uppercase text-white/80">Verificación de Identidad Nacional (SUNAT PIDE)</h3>
         </div>
 
         <div className="space-y-2.5">
           <div className="text-[10px] text-white/80 leading-relaxed">
-            Colaborador Autenticado: <strong className="text-[#00FF41]">{currentUser.name}</strong>
+            Colaborador Autenticado: <strong className="text-success">{currentUser.name}</strong>
           </div>
           <div className="grid grid-cols-2 gap-2 text-[9px] font-mono">
             <div className="bg-dark-bg p-2 rounded-lg border border-white/5">
@@ -402,7 +402,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
             </div>
             <div className="bg-dark-bg p-2 rounded-lg border border-white/5">
               <span className="text-white/40 block text-[7.5px] uppercase">Estado Inicial:</span>
-              <span className="font-bold text-[#FFBF00]">Pendiente Rostro</span>
+              <span className="font-bold text-warning">Pendiente Rostro</span>
             </div>
           </div>
 
@@ -411,7 +411,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
               type="button"
               onClick={handleReniecVerification}
               disabled={isAlreadyMarkedToday || isScanning}
-              className="w-full mt-1.5 py-3 bg-[#00FF41]/10 hover:bg-[#00FF41]/20 text-[#00FF41] border border-[#00FF41]/30 hover:border-[#00FF41]/60 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(0,255,65,0.05)] active:scale-[0.983]"
+              className="w-full mt-1.5 py-3 bg-success/10 hover:bg-success/20 text-success border border-success/30 hover:border-success/60 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(0,255,65,0.05)] active:scale-[0.983]"
             >
               🔬 INICIAR COMPARACIÓN BIOMÉTRICA CON DEPARTAMENTO SUNAT
             </button>
@@ -423,14 +423,14 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
           <div className="bg-[#0c0c0e] border border-white/5 p-3 rounded-lg flex flex-col gap-2">
             {reniecQueryState === 'conectar' && (
               <div className="flex items-center gap-2.5 text-[9.5px] font-mono text-white/60">
-                <Loader2 className="w-4 h-4 animate-spin text-[#00FF41]" />
+                <Loader2 className="w-4 h-4 animate-spin text-success" />
                 <span className="uppercase tracking-wider">Estableciendo canal cifrado con Servidor de Producción RENIEC (PIDE)...</span>
               </div>
             )}
             
             {reniecQueryState === 'consultar' && (
-              <div className="flex items-center gap-2.5 text-[9.5px] font-mono text-[#FFBF00]">
-                <Loader2 className="w-4 h-4 animate-spin text-[#FFBF00]" />
+              <div className="flex items-center gap-2.5 text-[9.5px] font-mono text-warning">
+                <Loader2 className="w-4 h-4 animate-spin text-warning" />
                 <span className="uppercase tracking-wider animate-pulse font-bold">Servidor RENIEC respondiendo: Buscando registro para DNI {currentUser.dni}...</span>
               </div>
             )}
@@ -444,14 +444,14 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
 
             {reniecQueryState === 'match' && (
               <div className="space-y-2">
-                <div className="flex items-center gap-2.5 text-[9.5px] font-bold text-[#00FF41]">
-                  <Check className="w-4.5 h-4.5 text-[#00FF41] bg-[#00FF41]/10 rounded-full p-0.5" />
+                <div className="flex items-center gap-2.5 text-[9.5px] font-bold text-success">
+                  <Check className="w-4.5 h-4.5 text-success bg-success/10 rounded-full p-0.5" />
                   <span className="uppercase tracking-widest">COINCIDENCIA BIOMÉTRICA RENIEC EXITOSA</span>
                 </div>
                 <div className="grid grid-cols-2 gap-3 mt-1 text-[10px] items-center text-white/75 bg-white/5 p-2 rounded-lg border border-white/5">
                   <div className="flex flex-col gap-1">
                     <span className="text-[7.5px] text-white/40 uppercase">Afinidad DNI / Rostro:</span>
-                    <span className="font-mono text-sm text-[#00FF41] font-bold">✔ Match - {faceSimilarityScore}%</span>
+                    <span className="font-mono text-sm text-success font-bold">✔ Match - {faceSimilarityScore}%</span>
                   </div>
                   <div className="flex flex-col gap-1">
                     <span className="text-[7.5px] text-white/40 uppercase">Validación de Firma:</span>
@@ -463,7 +463,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
 
             {reniecQueryState === 'error' && reniecError && (
               <div className="flex items-start gap-2.5 text-[9px] text-rose-450 bg-rose-950/20 border border-rose-900/40 p-2.5 rounded-lg text-rose-400">
-                <ShieldAlert className="w-5 h-5 flex-shrink-0 text-rose-500 mt-0.5" />
+                <ShieldAlert className="w-5 h-5 shrink-0 text-rose-500 mt-0.5" />
                 <span className="font-semibold uppercase leading-normal">{reniecError}</span>
               </div>
             )}
@@ -478,7 +478,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
           {/* Box A: live camera simulation */}
           <div className="flex flex-col items-center gap-1.5">
             <span className="text-[8px] uppercase tracking-widest text-white/50 font-black">Escáner Facial en Vivo</span>
-            <div className="relative w-32 h-32 rounded-xl border-2 border-[#2200FF]/40 shadow-[0_0_10px_rgba(34,0,255,0.15)] flex items-center justify-center bg-dark-bg overflow-hidden">
+            <div className="relative w-32 h-32 rounded-xl border-2 border-primary/40 shadow-[0_0_10px_rgba(34,0,255,0.15)] flex items-center justify-center bg-dark-bg overflow-hidden">
               <div className="absolute inset-0 rounded-xl overflow-hidden">
                 {useWebcam && webcamEnabled ? (
                   <video 
@@ -497,19 +497,19 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
                   />
                 )}
 
-                <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(34,0,255,0.1)_0%,_rgba(5,5,5,0.7)_100%)] pointer-events-none"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(34,0,255,0.1)_0%,rgba(5,5,5,0.7)_100%)] pointer-events-none"></div>
 
                 {/* Scanning Laser */}
                 {matchedWithReniec && (
-                  <div className="absolute inset-0 bg-[#00FF41]/10 flex items-center justify-center">
-                    <span className="text-[7.5px] font-black bg-black/80 text-[#00FF41] px-1 py-0.5 rounded border border-[#00FF41]/30">LIVE DETECTED</span>
+                  <div className="absolute inset-0 bg-success/10 flex items-center justify-center">
+                    <span className="text-[7.5px] font-black bg-black/80 text-success px-1 py-0.5 rounded border border-success/30">LIVE DETECTED</span>
                   </div>
                 )}
               </div>
 
               {isScanning && (
-                <div className="absolute inset-0 bg-dark-bg/85 backdrop-blur-[1px] flex flex-col items-center justify-center text-[#00FF41] gap-1 z-10">
-                  <Fingerprint className="w-8 h-8 animate-ping text-[#00FF41]" />
+                <div className="absolute inset-0 bg-dark-bg/85 backdrop-blur-[1px] flex flex-col items-center justify-center text-success gap-1 z-10">
+                  <Fingerprint className="w-8 h-8 animate-ping text-success" />
                   <span className="text-[7px] font-black tracking-widest font-mono text-center">ANALIZANDO...</span>
                 </div>
               )}
@@ -535,7 +535,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
                       REGISTRO CIVIL DNI
                     </div>
                   </div>
-                  <div className="absolute top-1 right-1 bg-[#00FF41] p-0.5 rounded-full" title="Verificado con RENIEC">
+                  <div className="absolute top-1 right-1 bg-success p-0.5 rounded-full" title="Verificado con RENIEC">
                     <UserCheck className="w-2.5 h-2.5 text-black" />
                   </div>
                 </div>
@@ -553,7 +553,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
         <div className="mt-3.5 flex flex-col items-center gap-1">
           <div className="flex gap-2 items-center">
             <div className="flex items-center gap-1.5 px-3 py-1 bg-[#121212] rounded-full border border-white/10">
-              <span className={`w-1.5 h-1.5 rounded-full ${isScanning ? 'bg-[#FFBF00] animate-pulse' : matchedWithReniec ? 'bg-[#00FF41]' : 'bg-rose-500'}`} />
+              <span className={`w-1.5 h-1.5 rounded-full ${isScanning ? 'bg-warning animate-pulse' : matchedWithReniec ? 'bg-success' : 'bg-rose-500'}`} />
               <p className="text-[8px] uppercase tracking-widest font-black text-white/70">
                 {isScanning ? 'PROCESANDO VECTORES...' : matchedWithReniec ? 'CONCORDANCIA BIOMÉTRICA CONFIRMADA' : 'FALTA VERIFICAR IDENTIDAD'}
               </p>
@@ -562,7 +562,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
             <button 
               onClick={toggleWebcam}
               disabled={isAlreadyMarkedToday}
-              className={`p-1 rounded-full border transition-all ${useWebcam ? 'bg-[#2200FF] border-[#2200FF] text-white shadow' : 'bg-[#121212] border-white/10 text-white/40 hover:bg-white/5'}`}
+              className={`p-1 rounded-full border transition-all ${useWebcam ? 'bg-primary border-primary text-white shadow' : 'bg-[#121212] border-white/10 text-white/40 hover:bg-white/5'}`}
               title="Disparar camara real / simulador"
             >
               <Camera className="w-3 h-3" />
@@ -583,8 +583,8 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
               <span className="text-[7.5px] uppercase tracking-widest font-black">FUERA DE PERÍMETRO</span>
             </div>
           ) : (
-            <div className="flex items-center gap-1 px-2 py-0.5 bg-[#00FF41]/10 border border-[#00FF41]/20 text-[#00FF41] rounded-full w-fit">
-              <MapPin className="w-2.5 h-2.5 text-[#00FF41]" />
+            <div className="flex items-center gap-1 px-2 py-0.5 bg-success/10 border border-success/20 text-success rounded-full w-fit">
+              <MapPin className="w-2.5 h-2.5 text-success" />
               <span className="text-[7.5px] uppercase tracking-widest font-black">DENTRO DE LA SEDE</span>
             </div>
           )}
@@ -599,7 +599,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
             <button
               onClick={() => handleQueryRealDeviceGPS(true)}
               disabled={isAlreadyMarkedToday || isFetchingGPS}
-              className="px-2 py-0.5 bg-[#2200FF] hover:bg-[#1a00cc] disabled:bg-white/5 disabled:text-white/20 text-white rounded text-[8px] font-black uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
+              className="px-2 py-0.5 bg-primary hover:bg-[#1a00cc] disabled:bg-white/5 disabled:text-white/20 text-white rounded text-[8px] font-black uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
             >
               {isFetchingGPS ? (
                 <>
@@ -625,7 +625,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
           {distanceToOffice !== null && (
             <div className="text-[9px] text-white/50 flex justify-between items-center pt-1.5 border-t border-white/5">
               <span>Distancia al local laboral:</span>
-              <span className={`font-mono font-bold ${distanceToOffice <= 0.8 ? 'text-[#00FF41]' : 'text-rose-400'}`}>
+              <span className={`font-mono font-bold ${distanceToOffice <= 0.8 ? 'text-success' : 'text-rose-400'}`}>
                 {distanceToOffice <= 0.8 ? `${(distanceToOffice * 1000).toFixed(0)} metros` : `${distanceToOffice.toFixed(2)} km`}
               </span>
             </div>
@@ -633,13 +633,13 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
 
           {/* Test Option to Set Current Physical Coords as Reference Company Office pivot */}
           {realCoords && !isAlreadyMarkedToday && (
-            <div className="pt-1.5 flex flex-col gap-1 text-[8.5px] text-[#FFBF00] border-t border-white/5">
+            <div className="pt-1.5 flex flex-col gap-1 text-[8.5px] text-warning border-t border-white/5">
               <p className="font-semibold leading-snug">
                 👉 ¿Quieres asegurar el rango? Fija tu GPS real de este momento como ubicación laboral de la empresa:
               </p>
               <button
                 onClick={handleSetCurrentCoordinatesAsWorkOffice}
-                className="mt-1 py-0.5 px-1.5 self-start bg-[#FFBF00]/10 hover:bg-[#FFBF00]/25 text-[#FFBF00] border border-[#FFBF00]/20 rounded text-[7.5px] font-black uppercase tracking-widest cursor-pointer transition-colors"
+                className="mt-1 py-0.5 px-1.5 self-start bg-warning/10 hover:bg-warning/25 text-warning border border-warning/20 rounded text-[7.5px] font-black uppercase tracking-widest cursor-pointer transition-colors"
               >
                 Fijar mi GPS aquí como Sede Central laboral
               </button>
@@ -658,16 +658,16 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
             </div>
           ) : (
             <>
-              <div className="absolute inset-0 bg-dark-bg bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),_linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:16px_16px]"></div>
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[16px_16px]"></div>
               
               {/* Radar scanner sweep */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-                <span className="absolute w-12 h-12 rounded-full bg-[#2200FF]/15 animate-ping" />
-                <span className="absolute w-8 h-8 rounded-full bg-[#00FF41]/10 animate-pulse border border-[#00FF41]/20" />
-                <div className="w-1.5 h-1.5 bg-[#2200FF] rounded-full border border-white relative z-10 shadow"></div>
+                <span className="absolute w-12 h-12 rounded-full bg-primary/15 animate-ping" />
+                <span className="absolute w-8 h-8 rounded-full bg-success/10 animate-pulse border border-success/20" />
+                <div className="w-1.5 h-1.5 bg-primary rounded-full border border-white relative z-10 shadow"></div>
               </div>
 
-              <div className="absolute bottom-1 right-1.5 bg-dark-bg/95 text-[7px] tracking-widest text-[#00FF41] px-1.5 py-0.5 rounded font-mono border border-white/5 uppercase font-bold">
+              <div className="absolute bottom-1 right-1.5 bg-dark-bg/95 text-[7px] tracking-widest text-success px-1.5 py-0.5 rounded font-mono border border-white/5 uppercase font-bold">
                 Ubicación dentro de cuadrícula
               </div>
             </>
@@ -676,13 +676,13 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
 
         {errorMessage && (
           <p className="text-[9px] text-rose-400 bg-rose-955/20 px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 max-w-full text-center border border-rose-800/30 font-semibold uppercase tracking-wider">
-            <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" /> {errorMessage}
+            <AlertCircle className="w-3.5 h-3.5 shrink-0" /> {errorMessage}
           </p>
         )}
 
         {successMsg && (
-          <p className="text-[9px] text-[#00FF41] bg-[#00FF41]/10 px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 max-w-full text-center border border-[#00FF41]/25 font-black uppercase tracking-wider">
-            <Check className="w-3.5 h-3.5 flex-shrink-0" /> {successMsg}
+          <p className="text-[9px] text-success bg-success/10 px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 max-w-full text-center border border-success/25 font-black uppercase tracking-wider">
+            <Check className="w-3.5 h-3.5 shrink-0" /> {successMsg}
           </p>
         )}
       </section>
@@ -693,7 +693,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
           onClick={handleRegister}
           disabled={isScanning || isAlreadyMarkedToday || !matchedWithReniec || locationInQuery === 'Fuera de Rango'}
           id="btn-registrar-entrada"
-          className="w-full h-12 bg-[#2200FF] hover:bg-[#1a00cc] text-white rounded-xl font-black uppercase text-[10px] tracking-widest flex items-center justify-center gap-2 active:scale-95 transition-all shadow-xl disabled:bg-[#121212] disabled:text-white/20 disabled:border-white/5 disabled:shadow-none cursor-pointer"
+          className="w-full h-12 bg-primary hover:bg-[#1a00cc] text-white rounded-xl font-black uppercase text-[10px] tracking-widest flex items-center justify-center gap-2 active:scale-95 transition-all shadow-xl disabled:bg-[#121212] disabled:text-white/20 disabled:border-white/5 disabled:shadow-none cursor-pointer"
         >
           <Fingerprint className="w-3.5 h-3.5" />
           <span>Confirmar {registryType} de {currentUser.name}</span>

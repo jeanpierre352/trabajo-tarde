@@ -229,26 +229,26 @@ export default function App() {
 
   if (!isLoggedIn) {
     return (
-      <div className="bg-[#050505] text-[#F0F0F0] min-h-screen font-sans flex flex-col justify-center relative max-w-md mx-auto shadow-2xl border-x border-white/10 overflow-hidden">
+      <div className="bg-dark-bg text-[#F0F0F0] min-h-screen font-sans flex flex-col justify-center relative max-w-md mx-auto shadow-2xl border-x border-white/10 overflow-hidden">
         {/* Top right epic decoration blur from Design HTML */}
-        <div className="absolute top-[-10%] right-[-10%] w-[350px] h-[350px] bg-[#2200FF] rounded-full blur-[100px] opacity-20 pointer-events-none z-0"></div>
+        <div className="absolute top-[-10%] right-[-10%] w-87.5 h-87.5 bg-primary rounded-full blur-[100px] opacity-20 pointer-events-none z-0"></div>
         {/* Toast feedback notifications */}
         {toast && (
           <div 
             id="toast-notification" 
             className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-80 px-4 py-3 rounded-xl shadow-lg border text-xs flex gap-2 items-center animate-[bounce_0.5s_1] ${
               toast.type === 'success' 
-                ? 'bg-[#121212] border-[#00FF41]/30 text-[#00FF41] shadow-[#00FF41]/10' 
+                ? 'bg-[#121212] border-success/30 text-success shadow-success/10' 
                 : toast.type === 'warn'
-                ? 'bg-[#121212] border-[#FFBF00]/30 text-[#FFBF00] shadow-[#FFBF00]/10'
-                : 'bg-[#121212] border-[#2200FF]/30 text-[#F0F0F0] shadow-[#2200FF]/15'
+                ? 'bg-[#121212] border-warning/30 text-warning shadow-warning/10'
+                : 'bg-[#121212] border-primary/30 text-[#F0F0F0] shadow-primary/15'
             }`}
           >
-            <AlertCircle className="w-4 h-4 flex-shrink-0" />
+            <AlertCircle className="w-4 h-4 shrink-0" />
             <span className="font-semibold">{toast.message}</span>
           </div>
         )}
-        <main className="flex-grow flex items-center justify-center py-4 z-10 relative">
+        <main className="grow flex items-center justify-center py-4 z-10 relative">
           <LoginScreen workers={workers.length > 0 ? workers : INITIAL_WORKERS} onLoginSuccess={handleLoginSuccess} />
         </main>
       </div>
@@ -256,9 +256,9 @@ export default function App() {
   }
 
   return (
-    <div className="bg-[#050505] text-[#F0F0F0] min-h-screen font-sans flex flex-col relative max-w-md mx-auto shadow-2xl border-x border-white/10 overflow-hidden">
+    <div className="bg-dark-bg text-[#F0F0F0] min-h-screen font-sans flex flex-col relative max-w-md mx-auto shadow-2xl border-x border-white/10 overflow-hidden">
       {/* Top right epic decoration blur from Design HTML */}
-      <div className="absolute top-[-10%] right-[-10%] w-[350px] h-[350px] bg-[#2200FF] rounded-full blur-[100px] opacity-20 pointer-events-none z-0"></div>
+      <div className="absolute top-[-10%] right-[-10%] w-87.5 h-87.5 bg-primary rounded-full blur-[100px] opacity-20 pointer-events-none z-0"></div>
       
       {/* Toast feedback notifications */}
       {toast && (
@@ -266,23 +266,23 @@ export default function App() {
           id="toast-notification" 
           className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-80 px-4 py-3 rounded-xl shadow-lg border text-xs flex gap-2 items-center animate-[bounce_0.5s_1] ${
             toast.type === 'success' 
-              ? 'bg-[#121212] border-[#00FF41]/30 text-[#00FF41] shadow-[#00FF41]/10' 
+              ? 'bg-[#121212] border-success/30 text-success shadow-success/10' 
               : toast.type === 'warn'
-              ? 'bg-[#121212] border-[#FFBF00]/30 text-[#FFBF00] shadow-[#FFBF00]/10'
-              : 'bg-[#121212] border-[#2200FF]/30 text-[#F0F0F0] shadow-[#2200FF]/15'
+              ? 'bg-[#121212] border-warning/30 text-warning shadow-warning/10'
+              : 'bg-[#121212] border-primary/30 text-[#F0F0F0] shadow-primary/15'
           }`}
         >
-          <AlertCircle className="w-4 h-4 flex-shrink-0" />
+          <AlertCircle className="w-4 h-4 shrink-0" />
           <span className="font-semibold">{toast.message}</span>
         </div>
       )}
 
       {/* Top Application Header bar */}
-      <header className="bg-[#050505]/90 backdrop-blur-md sticky top-0 z-30 flex justify-between items-center px-4 h-16 border-b border-white/10 shadow-sm">
+      <header className="bg-dark-bg/90 backdrop-blur-md sticky top-0 z-30 flex justify-between items-center px-4 h-16 border-b border-white/10 shadow-sm">
         <div className="flex items-center gap-2">
-          <ShieldCheck className="w-5 h-5 text-[#2200FF]" />
+          <ShieldCheck className="w-5 h-5 text-primary" />
           <h1 className="text-xs font-black tracking-tighter text-[#F0F0F0] uppercase">
-            AETHER<span className="text-[#2200FF]">.</span>
+            AETHER<span className="text-primary">.</span>
             {activeScreen === 'marcacion' && 'CONTROL'}
             {activeScreen === 'exitoso' && 'VERIFICACIÓN'}
             {activeScreen === 'historial' && 'HISTORIAL'}
@@ -317,7 +317,7 @@ export default function App() {
                   key={worker.id}
                   onClick={() => handleUserSwitch(worker)}
                   className={`w-full text-left px-3 py-2.5 text-xs flex items-center gap-2.5 transition-colors ${
-                    currentUser.id === worker.id ? 'bg-[#2200FF]/25 font-bold text-white border-l-2 border-[#2200FF]' : 'text-white/70 hover:bg-white/5 hover:text-white'
+                    currentUser.id === worker.id ? 'bg-primary/25 font-bold text-white border-l-2 border-primary' : 'text-white/70 hover:bg-white/5 hover:text-white'
                   }`}
                 >
                   <Avatar name={worker.name} photoUrl={worker.photoUrl} className="w-6 h-6 rounded-full border border-white/10" />
@@ -342,7 +342,7 @@ export default function App() {
                     handleLogout();
                     setShowProfileSwitcher(false);
                   }}
-                  className="w-full text-left px-2 py-1.5 text-[9px] uppercase tracking-wider text-amber-500 hover:bg-amber-950/20 rounded-lg flex items-center gap-1 font-bold text-amber-400"
+                  className="w-full text-left px-2 py-1.5 text-[9px] uppercase tracking-wider hover:bg-amber-950/20 rounded-lg flex items-center gap-1 font-bold text-amber-400"
                 >
                   <LogOut className="w-3 h-3" /> Cerrar Sesión
                 </button>
@@ -355,7 +355,7 @@ export default function App() {
 
 
       {/* Main Screen Router layout body */}
-      <main className="flex-grow py-4 z-10 relative">
+      <main className="grow py-4 z-10 relative">
         {activeScreen === 'marcacion' && (
           <MarcacionScreen 
             currentUser={currentUser}
@@ -408,7 +408,7 @@ export default function App() {
               }}
               className={`flex flex-col items-center justify-center transition-all px-6 py-2 rounded-xl border border-transparent cursor-pointer ${
                 activeScreen === 'marcacion' || activeScreen === 'exitoso'
-                  ? 'bg-[#2200FF] text-white shadow-[0_0_15px_rgba(34,0,255,0.4)] font-black' 
+                  ? 'bg-primary text-white shadow-[0_0_15px_rgba(34,0,255,0.4)] font-black' 
                   : 'text-white/40 hover:text-[#F0F0F0] hover:bg-white/5'
               }`}
               title="Registro Biométrico de Asistencia"
@@ -422,7 +422,7 @@ export default function App() {
               onClick={() => setActiveScreen('historial')}
               className={`flex flex-col items-center justify-center transition-all px-6 py-2 rounded-xl border border-transparent cursor-pointer ${
                 activeScreen === 'historial' 
-                  ? 'bg-[#2200FF] text-white shadow-[0_0_15px_rgba(34,0,255,0.4)] font-black' 
+                  ? 'bg-primary text-white shadow-[0_0_15px_rgba(34,0,255,0.4)] font-black' 
                   : 'text-white/40 hover:text-[#F0F0F0] hover:bg-white/5'
               }`}
               title="Mis registros personales"
@@ -438,7 +438,7 @@ export default function App() {
               onClick={() => setActiveScreen('reportes')}
               className={`flex-1 flex flex-col items-center justify-center transition-all py-2 rounded-xl border border-transparent cursor-pointer ${
                 activeScreen === 'reportes' || activeScreen === 'horarios'
-                  ? 'bg-[#2200FF] text-white shadow-[0_0_15px_rgba(34,0,255,0.4)] font-black' 
+                  ? 'bg-primary text-white shadow-[0_0_15px_rgba(34,0,255,0.4)] font-black' 
                   : 'text-white/40 hover:text-[#F0F0F0] hover:bg-white/5'
               }`}
               title="Panel de Control Administrador"

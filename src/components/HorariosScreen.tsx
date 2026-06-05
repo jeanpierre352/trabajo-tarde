@@ -124,9 +124,9 @@ export default function HorariosScreen({ workers }: HorariosScreenProps) {
     <div id="horarios-screen" className="max-w-md mx-auto w-full px-4 py-4 pb-24">
       {/* Dynamic confirmation notification toast */}
       {notification && (
-        <div className="bg-[#121212] border border-[#00FF41]/30 p-3 rounded-xl mb-4 text-[#00FF41] text-xs flex gap-2 items-center">
-          <Check className="w-4 h-4 flex-shrink-0" />
-          <span className="font-semibold">{notification}</span>
+        <div className="bg-[#121212] border border-success/30 p-3 rounded-xl mb-4 text-success text-xs flex gap-2 items-center">
+          <Check className="w-4 h-4 shrink-0" />
+          <span className="font-semibold text-success">{notification}</span>
         </div>
       )}
 
@@ -149,7 +149,7 @@ export default function HorariosScreen({ workers }: HorariosScreenProps) {
           <select
             value={selectedWorkerId}
             onChange={(e) => setSelectedWorkerId(e.target.value)}
-            className="w-full px-3 py-2 bg-dark-bg border border-white/10 rounded-lg text-xs font-semibold text-white focus:outline-none focus:ring-1 focus:ring-[#2200FF]"
+            className="w-full px-3 py-2 bg-dark-bg border border-white/10 rounded-lg text-xs font-semibold text-white focus:outline-none focus:ring-1 focus:ring-primary"
           >
             {workers.map(w => (
               <option key={w.id} value={w.id}>
@@ -201,7 +201,7 @@ export default function HorariosScreen({ workers }: HorariosScreenProps) {
               placeholder="Ej. 08:00"
               required
               onChange={(e) => setEntryTime(e.target.value)}
-              className="w-full px-3 py-2 bg-dark-bg border border-white/10 rounded-lg text-xs font-mono text-center text-white focus:outline-none focus:ring-1 focus:ring-[#2200FF]"
+              className="w-full px-3 py-2 bg-dark-bg border border-white/10 rounded-lg text-xs font-mono text-center text-white focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
 
@@ -215,14 +215,14 @@ export default function HorariosScreen({ workers }: HorariosScreenProps) {
               placeholder="Ej. 17:00"
               required
               onChange={(e) => setExitTime(e.target.value)}
-              className="w-full px-3 py-2 bg-dark-bg border border-white/10 rounded-lg text-xs font-mono text-center text-white focus:outline-none focus:ring-1 focus:ring-[#2200FF]"
+              className="w-full px-3 py-2 bg-dark-bg border border-white/10 rounded-lg text-xs font-mono text-center text-white focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
         </div>
 
         <button
           type="submit"
-          className="w-full py-2.5 bg-[#2200FF] hover:bg-[#1a00cc] text-white rounded-xl font-black uppercase tracking-widest transition-all text-[10px] cursor-pointer"
+          className="w-full py-2.5 bg-primary hover:bg-[#1a00cc] text-white rounded-xl font-black uppercase tracking-widest transition-all text-[10px] cursor-pointer"
         >
           Actualizar Horario
         </button>
@@ -239,13 +239,13 @@ export default function HorariosScreen({ workers }: HorariosScreenProps) {
             <div
               key={sched.workerId}
               onClick={() => handleSelectScheduleForEdit(sched)}
-              className="bg-[#121212] border border-white/10 p-3 rounded-xl flex items-center justify-between hover:border-[#2200FF]/40 transition-all cursor-pointer shadow-md"
+              className="bg-[#121212] border border-white/10 p-3 rounded-xl flex items-center justify-between hover:border-primary/40 transition-all cursor-pointer shadow-md"
             >
               <div className="flex items-center gap-3">
                 <Avatar photoUrl={sched.photoUrl} name={sched.workerName} className="w-10 h-10 border border-white/10" />
                 <div>
                   <h4 className="text-xs font-black uppercase text-white tracking-wide">{sched.workerName}</h4>
-                  <p className="text-[9px] text-[#00FF41] font-bold mt-0.5 uppercase tracking-wider">
+                  <p className="text-[9px] text-success font-bold mt-0.5 uppercase tracking-wider">
                     Turno: {sched.shift} • {sched.status}
                   </p>
                 </div>
@@ -253,7 +253,7 @@ export default function HorariosScreen({ workers }: HorariosScreenProps) {
 
               <div className="flex flex-col items-end gap-1">
                 <div className="flex items-center gap-1 bg-dark-bg px-2 py-1 rounded text-[10px] font-mono border border-white/5">
-                  <Clock className="w-3 h-3 text-[#2200FF]" />
+                  <Clock className="w-3 h-3 text-primary" />
                   <span>{sched.entryTime} - {sched.exitTime}</span>
                 </div>
                 <span className="text-[8px] text-white/40 uppercase font-black tracking-widest flex items-center gap-0.5">

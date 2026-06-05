@@ -95,12 +95,12 @@ export default function LoginScreen({ workers, onLoginSuccess }: LoginScreenProp
       
       {/* Branding and Title */}
       <div className="text-center flex flex-col items-center gap-2.5">
-        <div className="w-16 h-16 rounded-2xl bg-[#2200FF]/10 border border-[#2200FF]/30 flex items-center justify-center shadow-[0_0_20px_rgba(34,0,255,0.15)] animate-pulse">
-          <ShieldCheck className="w-9 h-9 text-[#2200FF]" />
+        <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/30 flex items-center justify-center shadow-[0_0_20px_rgba(34,0,255,0.15)] animate-pulse">
+          <ShieldCheck className="w-9 h-9 text-primary" />
         </div>
         <div>
           <h2 className="text-lg font-black tracking-widest text-white uppercase">
-            AETHER<span className="text-[#2200FF]">.</span>SECURITY
+            AETHER<span className="text-primary">.</span>SECURITY
           </h2>
           <p className="text-[10px] text-white/50 tracking-wide uppercase mt-1">
             Sistema de Acceso Biométrico y Reniec
@@ -111,7 +111,7 @@ export default function LoginScreen({ workers, onLoginSuccess }: LoginScreenProp
       {/* Main Login Form */}
       <form onSubmit={handleLogin} className="bg-[#121212] border border-white/10 rounded-2xl p-5 space-y-4 shadow-xl relative overflow-hidden">
         {/* Card Background subtle light */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-[#2200FF] rounded-full blur-[60px] opacity-10 pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-32 h-32 bg-primary rounded-full blur-[60px] opacity-10 pointer-events-none"></div>
 
         <h3 className="text-[10px] font-black tracking-widest uppercase text-white/60 border-b border-white/5 pb-2">
           Iniciar Sesión
@@ -137,7 +137,7 @@ export default function LoginScreen({ workers, onLoginSuccess }: LoginScreenProp
               }}
               placeholder="Ingrese su DNI de 8 dígitos"
               disabled={isLoading}
-            className="w-full bg-dark-bg border border-white/10 rounded-xl pl-10 pr-3.5 py-3 text-xs font-mono font-bold text-white tracking-widest focus:border-[#2200FF] focus:ring-1 focus:ring-[#2200FF] focus:outline-none placeholder-white/20"
+            className="w-full bg-dark-bg border border-white/10 rounded-xl pl-10 pr-3.5 py-3 text-xs font-mono font-bold text-white tracking-widest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none placeholder-white/20"
             />
           </div>
         </div>
@@ -160,7 +160,7 @@ export default function LoginScreen({ workers, onLoginSuccess }: LoginScreenProp
               }}
               placeholder="Ingrese su contraseña"
               disabled={isLoading}
-            className="w-full bg-dark-bg border border-white/10 rounded-xl pl-10 pr-10 py-3 text-xs text-white focus:border-[#2200FF] focus:ring-1 focus:ring-[#2200FF] focus:outline-none placeholder-white/20"
+            className="w-full bg-dark-bg border border-white/10 rounded-xl pl-10 pr-10 py-3 text-xs text-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none placeholder-white/20"
             />
             <button
               type="button"
@@ -176,7 +176,7 @@ export default function LoginScreen({ workers, onLoginSuccess }: LoginScreenProp
         {/* Feedback message display */}
         {errorMsg && (
           <div className="text-[9px] uppercase font-bold text-rose-455 bg-rose-950/25 border border-rose-900/30 p-2.5 rounded-xl text-rose-400 flex items-start gap-1 w-full animate-fadeIn">
-            <span className="font-extrabold flex-shrink-0">⚠️ ERROR:</span>
+            <span className="font-extrabold shrink-0">⚠️ ERROR:</span>
             <span>{errorMsg}</span>
           </div>
         )}
@@ -185,7 +185,7 @@ export default function LoginScreen({ workers, onLoginSuccess }: LoginScreenProp
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-3 bg-[#2200FF] hover:bg-[#1a00cc] disabled:bg-[#1a1a24] disabled:text-white/25 disabled:cursor-not-allowed text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shadow-lg shadow-[#2200FF]/15 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
+          className="w-full py-3 bg-primary hover:bg-[#1a00cc] disabled:bg-[#1a1a24] disabled:text-white/25 disabled:cursor-not-allowed text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shadow-lg shadow-primary/15 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
         >
           {isLoading ? (
             <>
@@ -205,12 +205,12 @@ export default function LoginScreen({ workers, onLoginSuccess }: LoginScreenProp
       <div className="bg-[#121212]/70 border border-white/5 rounded-2xl p-4.5 space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5">
-            <Key className="w-3.5 h-3.5 text-[#FFBF00]" />
+            <Key className="w-3.5 h-3.5 text-warning" />
             <span className="text-[9px] uppercase tracking-widest font-black text-white/60">
               Cuentas Demo Habilitadas
             </span>
           </div>
-          <span className="text-[7.5px] font-mono px-1.5 py-0.5 rounded bg-[#00FF41]/10 text-[#00FF41] font-black uppercase">
+          <span className="text-[7.5px] font-mono px-1.5 py-0.5 rounded bg-success/10 text-success font-black uppercase">
             Autocompletar
           </span>
         </div>
@@ -231,7 +231,7 @@ export default function LoginScreen({ workers, onLoginSuccess }: LoginScreenProp
                 onClick={() => handleQuickFill(user.dni, user.password)}
                 className={`w-full text-left p-2.5 rounded-xl border transition-all text-[11px] flex items-center justify-between group ${
                   isActive 
-                    ? 'bg-[#2200FF]/10 border-[#2200FF]/40 text-white' 
+                    ? 'bg-primary/10 border-primary/40 text-white' 
                     : 'bg-dark-bg/40 border-white/5 text-white/70 hover:bg-white/5 hover:border-white/10'
                 }`}
               >
@@ -239,7 +239,7 @@ export default function LoginScreen({ workers, onLoginSuccess }: LoginScreenProp
                   <img 
                     src={user.photoUrl} 
                     alt={user.name} 
-                    className="w-5 h-5 rounded-full object-cover border border-white/10 flex-shrink-0"
+                    className="w-5 h-5 rounded-full object-cover border border-white/10 shrink-0"
                     referrerPolicy="no-referrer"
                   />
                   <div className="min-w-0">
@@ -250,7 +250,7 @@ export default function LoginScreen({ workers, onLoginSuccess }: LoginScreenProp
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 flex-shrink-0 ml-2">
+                <div className="flex items-center gap-1.5 shrink-0 ml-2">
                   <span className={`text-[7px] font-black uppercase px-1 py-0.5 rounded ${
                     isAdmin 
                       ? 'bg-purple-950/40 text-purple-400 border border-purple-900/30' 
@@ -260,8 +260,8 @@ export default function LoginScreen({ workers, onLoginSuccess }: LoginScreenProp
                   </span>
                   
                   {isActive && (
-                    <span className="p-0.5 bg-[#00FF41]/10 rounded-full">
-                      <Check className="w-3 h-3 text-[#00FF41]" />
+                    <span className="p-0.5 bg-success/10 rounded-full">
+                      <Check className="w-3 h-3 text-success" />
                     </span>
                   )}
                 </div>

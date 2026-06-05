@@ -44,7 +44,7 @@ export default function Avatar({ photoUrl, name, className }: AvatarProps) {
       <div className={`${className} bg-dark-bg border-2 flex items-center justify-center font-black relative overflow-hidden shrink-0 ${gradientClass}`}>
         <span className="relative z-10 select-none text-[0.8em] tracking-tight">{initials}</span>
         {/* Futuristic biometric pattern grid overlay */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] bg-[size:4px_4px]"></div>
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] bg-size-[4px_4px]"></div>
       </div>
     );
   }

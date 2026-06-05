@@ -1,0 +1,32 @@
+﻿{
+  "appId": "com.aether.security.asistencia",
+  "appName": "AETHER.SECURITY",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https",
+    "hostname": "aether.security.local"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#050505",
+    "captureInput": true,
+    "hideAccessoryBar": true,
+    "keyboardOverlap": false,
+    "splashScreen": {
+      "launchShowDuration": 2000,
+      "launchAutoHide": true,
+      "backgroundColor": "#050505",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false,
+      "androidSpinnerStyle": "large",
+      "spinnerColor": "#00D4FF"
+    },
+    "statusBarBackgroundColor": "#050505",
+    "statusBarStyle": "DARK",
+    "statusBarOverlaysWebView": false,
+    "androidX": true,
+    "autoDarkTheme": true,
+    "webContentsDebuggingEnabled": false
+  }
+}

@@ -264,14 +264,14 @@ export default function ReportesScreen({
       {/* Title Header */}
       <div className="mb-4 text-center">
         <h2 className="text-xs uppercase tracking-widest font-black text-white/50">Consola de Control</h2>
-        <p className="text-sm font-black text-[#2200FF] uppercase tracking-wider">ADMINISTRADOR GENERAL</p>
+        <p className="text-sm font-black text-primary uppercase tracking-wider">ADMINISTRADOR GENERAL</p>
       </div>
 
       {/* Roster database reset shortcut */}
       <div className="flex justify-between items-center bg-[#121212] border border-white/10 p-2.5 rounded-xl text-xs mb-4">
         <button 
           onClick={() => setShowSimModal(true)}
-          className="bg-[#2200FF]/25 hover:bg-[#2200FF]/40 border border-[#2200FF]/40 text-white font-black uppercase tracking-widest py-1.5 px-3 rounded-lg flex items-center gap-1 transition-all text-[9px] cursor-pointer"
+          className="bg-primary/25 hover:bg-primary/40 border border-primary/40 text-white font-black uppercase tracking-widest py-1.5 px-3 rounded-lg flex items-center gap-1 transition-all text-[9px] cursor-pointer"
         >
           <UserPlus className="w-3.5 h-3.5" /> Simular Ingreso
         </button>
@@ -289,7 +289,7 @@ export default function ReportesScreen({
         <button 
           onClick={() => setAdminTab('trabajadores')}
           className={`py-2 rounded-lg transition-all cursor-pointer ${
-            adminTab === 'trabajadores' ? 'bg-[#2200FF] text-white shadow-sm' : 'text-white/40 hover:text-white'
+            adminTab === 'trabajadores' ? 'bg-primary text-white shadow-sm' : 'text-white/40 hover:text-white'
           }`}
         >
           Equipos
@@ -297,7 +297,7 @@ export default function ReportesScreen({
         <button 
           onClick={() => setAdminTab('historial')}
           className={`py-2 rounded-lg transition-all cursor-pointer ${
-            adminTab === 'historial' ? 'bg-[#2200FF] text-white shadow-sm' : 'text-white/40 hover:text-white'
+            adminTab === 'historial' ? 'bg-primary text-white shadow-sm' : 'text-white/40 hover:text-white'
           }`}
         >
           Historial
@@ -305,7 +305,7 @@ export default function ReportesScreen({
         <button 
           onClick={() => setAdminTab('horarios')}
           className={`py-2 rounded-lg transition-all cursor-pointer ${
-            adminTab === 'horarios' ? 'bg-[#2200FF] text-white shadow-sm' : 'text-white/40 hover:text-white'
+            adminTab === 'horarios' ? 'bg-primary text-white shadow-sm' : 'text-white/40 hover:text-white'
           }`}
         >
           Turnos
@@ -313,7 +313,7 @@ export default function ReportesScreen({
         <button 
           onClick={() => setAdminTab('reporte')}
           className={`py-2 rounded-lg transition-all cursor-pointer ${
-            adminTab === 'reporte' ? 'bg-[#2200FF] text-white shadow-sm' : 'text-white/40 hover:text-white'
+            adminTab === 'reporte' ? 'bg-primary text-white shadow-sm' : 'text-white/40 hover:text-white'
           }`}
         >
           Reporte
@@ -321,7 +321,7 @@ export default function ReportesScreen({
       </div>
 
       {scheduleNotification && (
-        <div className="bg-[#121212] border border-[#00FF41]/30 p-2 text-center rounded-xl mb-4 text-[#00FF41] text-[10px] font-bold uppercase tracking-widest">
+        <div className="bg-[#121212] border border-success/30 p-2 text-center rounded-xl mb-4 text-success text-[10px] font-bold uppercase tracking-widest">
           {scheduleNotification}
         </div>
       )}
@@ -336,14 +336,14 @@ export default function ReportesScreen({
           </div>
 
           {/* SUNAT Biometric API status card widget */}
-          <div className="bg-[#121212] border border-[#00FF41]/30 rounded-xl p-3.5 relative overflow-hidden shadow-[0_0_15px_rgba(0,255,65,0.04)]">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-[#00FF41]/5 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="bg-[#121212] border border-success/30 rounded-xl p-3.5 relative overflow-hidden shadow-[0_0_15px_rgba(0,255,65,0.04)]">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-success/5 rounded-full blur-2xl pointer-events-none"></div>
             <div className="flex items-center justify-between border-b border-white/5 pb-2 mb-2">
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#00FF41] animate-ping"></span>
-                <h4 className="text-[10px] font-black uppercase tracking-widest text-[#00FF41]">SERVICIO BIOMÉTRICO SUNAT</h4>
+                <span className="w-2 h-2 rounded-full bg-success animate-ping"></span>
+                <h4 className="text-[10px] font-black uppercase tracking-widest text-success">SERVICIO BIOMÉTRICO SUNAT</h4>
               </div>
-              <span className="text-[7.5px] font-mono bg-[#00FF41]/10 text-[#00FF41] px-1.5 py-0.5 rounded font-black border border-[#00FF41]/25">
+              <span className="text-[7.5px] font-mono bg-success/10 text-success px-1.5 py-0.5 rounded font-black border border-success/25">
                 PIDE CONECTADO
               </span>
             </div>
@@ -352,10 +352,10 @@ export default function ReportesScreen({
               El panel de control valida la correspondencia de rasgos faciales de los empleados mediante conexión cifrada con el Registro Nacional:
             </p>
 
-            <div className="bg-[#050505] p-2 rounded-lg border border-white/5 space-y-1.5 text-[9px] font-mono">
+            <div className="bg-dark-bg p-2 rounded-lg border border-white/5 space-y-1.5 text-[9px] font-mono">
               <div className="flex justify-between">
                 <span className="text-white/40">API Credentials:</span>
-                <span className="text-[#FFBF00] select-all truncate max-w-[190px]" title="Clave de acceso al sistema biometría SUNAT">
+                <span className="text-warning select-all truncate max-w-47.5" title="Clave de acceso al sistema biometría SUNAT">
                   sk_16145.Je99XnC9Y6FbgWj49vpyDc4p36FIrWqG
                 </span>
               </div>
@@ -365,7 +365,7 @@ export default function ReportesScreen({
               </div>
               <div className="flex justify-between border-t border-white/5 pt-1.5">
                 <span className="text-white/40">Match Biométrico:</span>
-                <span className="text-[#00FF41] font-bold">Algoritmo Activo (Sunat.gob)</span>
+                <span className="text-success font-bold">Algoritmo Activo (Sunat.gob)</span>
               </div>
             </div>
           </div>
@@ -377,7 +377,7 @@ export default function ReportesScreen({
               type="text"
               placeholder="Buscar por nombre o ID de empleado..."
               value={searchTerm}
-              className="w-full pl-11 pr-4 py-2.5 bg-[#121212] border border-white/10 rounded-xl text-xs text-white placeholder:text-white/30 focus:ring-1 focus:ring-[#2200FF] focus:outline-none"
+              className="w-full pl-11 pr-4 py-2.5 bg-[#121212] border border-white/10 rounded-xl text-xs text-white placeholder:text-white/30 focus:ring-1 focus:ring-primary focus:outline-none"
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
@@ -390,7 +390,7 @@ export default function ReportesScreen({
                 onClick={() => setStatusFilter(pill)}
                 className={`px-3 py-1.5 rounded-full border transition-all cursor-pointer ${
                   statusFilter === pill 
-                    ? 'bg-white text-[#050505] border-white font-extrabold' 
+                    ? 'bg-white text-dark-bg border-white font-extrabold' 
                     : 'bg-[#121212] text-white/45 border-white/10 hover:text-white'
                 }`}
               >
@@ -406,12 +406,12 @@ export default function ReportesScreen({
               </div>
             ) : (
               filteredWorkers.map(w => (
-                <div key={w.id} className="bg-[#121212] border border-white/10 p-3 rounded-xl flex items-center justify-between hover:border-[#2200FF]/35 transition-all">
+                <div key={w.id} className="bg-[#121212] border border-white/10 p-3 rounded-xl flex items-center justify-between hover:border-primary/35 transition-all">
                   <div className="flex items-center gap-3 min-w-[65%]">
                     <Avatar name={w.name} photoUrl={w.photoUrl} className="w-9 h-9 border border-white/15" />
                     <div className="truncate">
                       <h4 className="text-xs font-black uppercase text-white truncate">{w.name}</h4>
-                      <p className="text-[9px] text-[#00FF41] font-mono tracking-wider mt-0.5 uppercase">
+                      <p className="text-[9px] text-success font-mono tracking-wider mt-0.5 uppercase">
                         ID: {w.id} • {w.time}
                       </p>
                     </div>
@@ -419,9 +419,9 @@ export default function ReportesScreen({
 
                   <div className="text-right flex flex-col items-end gap-1">
                     <span className={`px-2 py-0.5 rounded text-[8px] font-black uppercase tracking-widest ${
-                      w.status === 'Presente' ? 'bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/20' :
+                      w.status === 'Presente' ? 'bg-success/10 text-success border border-success/20' :
                       w.status === 'Tarde' ? 'bg-rose-955/20 text-[#ff4b4b] border border-rose-800/20' :
-                      'bg-amber-955/20 text-[#FFBF00] border border-amber-800/20'
+                      'bg-amber-955/20 text-warning border border-amber-800/20'
                     }`}>
                       {w.status}
                     </span>
@@ -471,7 +471,7 @@ export default function ReportesScreen({
                     <div className="flex items-center gap-1.5 flex-wrap">
                       <span className="text-white font-black uppercase text-[11px] leading-tight block truncate pr-1">{rec.workerName}</span>
                       <span className={`text-[8px] px-1.5 py-0.5 rounded font-black uppercase tracking-widest leading-none block ${
-                        rec.locationStatus === 'Dentro de Rango' ? 'bg-[#00FF41]/10 text-[#00FF41]' : 'bg-rose-955/20 text-[#ff4b4b]'
+                        rec.locationStatus === 'Dentro de Rango' ? 'bg-success/10 text-success' : 'bg-rose-955/20 text-[#ff4b4b]'
                       }`}>
                         {rec.locationStatus}
                       </span>
@@ -480,7 +480,7 @@ export default function ReportesScreen({
                     <div className="text-[10px] text-white/60 space-y-0.5">
                       <p className="font-mono text-white/40 tracking-wider">ID Empleado: {rec.workerId}</p>
                       <p className="font-mono text-[9px]">📍 {rec.location}</p>
-                      <p className="font-semibold text-[#2200FF] text-[9.5px]">🕰 {rec.date} • Entrada: {rec.entryTime} | Salida: {rec.exitTime}</p>
+                      <p className="font-semibold text-primary text-[9.5px]">🕰 {rec.date} • Entrada: {rec.entryTime} | Salida: {rec.exitTime}</p>
                     </div>
                   </div>
 
@@ -521,7 +521,7 @@ export default function ReportesScreen({
               <select
                 value={selectedWorkerId}
                 onChange={(e) => setSelectedWorkerId(e.target.value)}
-                className="w-full px-2.5 py-2 bg-dark-bg border border-white/10 rounded-lg text-xs font-semibold text-white focus:outline-none focus:ring-1 focus:ring-[#2200FF]"
+                className="w-full px-2.5 py-2 bg-dark-bg border border-white/10 rounded-lg text-xs font-semibold text-white focus:outline-none focus:ring-1 focus:ring-primary"
               >
                 {workers.map(w => (
                   <option key={w.id} value={w.id}>
@@ -594,7 +594,7 @@ export default function ReportesScreen({
 
             <button
               type="submit"
-              className="w-full py-2 bg-[#2200FF] hover:bg-[#1a00cc] text-white rounded-xl font-black uppercase tracking-widest transition-all text-[9px] cursor-pointer"
+              className="w-full py-2 bg-primary hover:bg-[#1a00cc] text-white rounded-xl font-black uppercase tracking-widest transition-all text-[9px] cursor-pointer"
             >
               Aplicar Cambios de Horario
             </button>
@@ -607,7 +607,7 @@ export default function ReportesScreen({
               <div 
                 key={sched.workerId}
                 onClick={() => handleSelectScheduleForEdit(sched)}
-                className="bg-[#121212] border border-white/10 p-3 rounded-xl flex items-center justify-between hover:border-[#2200FF] cursor-pointer transition-all"
+                className="bg-[#121212] border border-white/10 p-3 rounded-xl flex items-center justify-between hover:border-primary cursor-pointer transition-all"
               >
                 <div className="flex items-center gap-3">
                   <Avatar name={sched.workerName} photoUrl={sched.photoUrl} className="w-8 h-8 border border-white/10" />
@@ -621,7 +621,7 @@ export default function ReportesScreen({
                   <span className="text-[9.5px] font-mono bg-dark-bg border border-white/5 text-white px-2 py-1 rounded block">
                     {sched.entryTime} - {sched.exitTime}
                   </span>
-                  <span className="text-[8px] text-[#00FF41] font-bold block mt-1 uppercase">
+                  <span className="text-[8px] text-success font-bold block mt-1 uppercase">
                     ● {sched.status}
                   </span>
                 </div>
@@ -648,8 +648,8 @@ export default function ReportesScreen({
               <p className="text-xl font-mono font-bold leading-none text-white">{totalEmployeesCount}</p>
             </div>
             <div className="bg-[#121212] p-3 rounded-xl border border-white/10 flex flex-col justify-between h-20">
-              <span className="text-[8px] uppercase tracking-widest font-black text-[#00FF41]">En Sitio Hoy</span>
-              <p className="text-xl font-mono font-bold leading-none text-[#00FF41]">{presentCount}</p>
+              <span className="text-[8px] uppercase tracking-widest font-black text-success">En Sitio Hoy</span>
+              <p className="text-xl font-mono font-bold leading-none text-success">{presentCount}</p>
             </div>
             <div className="bg-[#121212] p-3 rounded-xl border border-white/10 flex flex-col justify-between h-20">
               <span className="text-[8px] uppercase tracking-widest font-black text-amber-400">Tardanzas</span>
@@ -664,7 +664,7 @@ export default function ReportesScreen({
           {/* Time Picker selection */}
           <div className="flex gap-3 text-xs items-center bg-[#121212] border border-white/10 p-3 rounded-xl justify-between">
             <div className="flex gap-2 items-center">
-              <Calendar className="w-4 h-4 text-[#2200FF]" />
+              <Calendar className="w-4 h-4 text-primary" />
               <span className="text-[9px] uppercase tracking-widest font-black">Periodo:</span>
               <select 
                 value={datePeriodFilter}
@@ -679,7 +679,7 @@ export default function ReportesScreen({
             {/* Export trigger */}
             <button
               onClick={handleExportCSV}
-              className="px-3 py-1.5 bg-[#2200FF] hover:bg-[#1a00cc] text-white text-[9px] font-black uppercase tracking-widest rounded-lg flex items-center gap-1 shadow-lg cursor-pointer"
+              className="px-3 py-1.5 bg-primary hover:bg-[#1a00cc] text-white text-[9px] font-black uppercase tracking-widest rounded-lg flex items-center gap-1 shadow-lg cursor-pointer"
             >
               <Download className="w-3 h-3" /> Descargar CSV
             </button>
@@ -702,7 +702,7 @@ export default function ReportesScreen({
                     <div className="font-bold truncate">{rec.workerName}</div>
                     <div className="text-center font-mono text-[9px] text-amber-300 font-semibold">{rec.entryTime}</div>
                     <div className={`text-right text-[9px] font-black uppercase ${
-                      rec.biometricsStatus === 'Verificado' ? 'text-[#00FF41]' : 'text-rose-400'
+                      rec.biometricsStatus === 'Verificado' ? 'text-success' : 'text-rose-400'
                     }`}>
                       {rec.biometricsStatus}
                     </div>
@@ -720,7 +720,7 @@ export default function ReportesScreen({
         <div id="simulation-modal" className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
           <div className="bg-dark-bg w-full max-w-sm rounded-2xl p-5 shadow-2xl border border-white/10 animate-[bounce_0.35s_1]">
             <h3 className="text-xs font-black text-white mb-4 uppercase tracking-widest flex items-center gap-1.5 border-b border-white/10 pb-2">
-              <UserPlus className="w-4 h-4 text-[#2200FF]" /> Simular Registro Entrada
+              <UserPlus className="w-4 h-4 text-primary" /> Simular Registro Entrada
             </h3>
 
             <form onSubmit={handleSimulateNewArrival} className="space-y-4">
@@ -732,7 +732,7 @@ export default function ReportesScreen({
                   value={simulationName}
                   required
                   onChange={(e) => setSimulationName(e.target.value)}
-                  className="w-full px-3 py-2 bg-dark-bg border border-white/10 rounded-lg text-xs font-semibold text-white focus:outline-none focus:ring-1 focus:ring-[#2200FF]"
+                  className="w-full px-3 py-2 bg-dark-bg border border-white/10 rounded-lg text-xs font-semibold text-white focus:outline-none focus:ring-1 focus:ring-primary"
                 />
               </div>
 
@@ -785,7 +785,7 @@ export default function ReportesScreen({
                 </button>
                 <button 
                   type="submit"
-                  className="flex-1 py-2 bg-[#2200FF] hover:bg-[#1a00cc] text-white rounded-xl shadow transition-all cursor-pointer"
+                  className="flex-1 py-2 bg-primary hover:bg-[#1a00cc] text-white rounded-xl shadow transition-all cursor-pointer"
                 >
                   Registrar
                 </button>

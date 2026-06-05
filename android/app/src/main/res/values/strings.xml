@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AETHER.SECURITY</string>
+    <string name="title_activity_main">AETHER.SECURITY</string>
+    <string name="ok">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="error_required">El campo %1$s es obligatorio.</string>
+    <string name="camera_title">Cámara</string>
+    <string name="location_explanation">Se requiere acceso a la ubicación para validar el geofencing.</string>
+    <string name="permission_denied">Permiso denegado. La aplicación debe cerrarse.</string>
+</resources>
