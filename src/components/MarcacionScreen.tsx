@@ -52,10 +52,11 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
   
   // DNI & RENIEC States
   const [dniInput, setDniInput] = useState('');
-  const [reniecQueryState, setReniecQueryState] = useState<'idle' | 'conectar' | 'consultar' | 'comparar' | 'match' | 'error'>('idle');
+  const [reniecQueryState, setReniecQueryState] = useState<'idle' | 'conectar' | 'foto' | 'comparar' | 'match' | 'error'>('idle');
   const [reniecError, setReniecError] = useState<string | null>(null);
   const [matchedWithReniec, setMatchedWithReniec] = useState(false);
   const [faceSimilarityScore, setFaceSimilarityScore] = useState<number | null>(null);
+  const [photoTaken, setPhotoTaken] = useState(false);
 
   // High accuracy geolocation status core variables
   const [locationInQuery, setLocationInQuery] = useState<'Oficina Central' | 'Sede Central' | 'Fuera de Rango'>('Oficina Central');
@@ -104,6 +105,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
     setFaceSimilarityScore(null);
     setSuccessMsg(null);
     setErrorMessage(null);
+    setPhotoTaken(false);
   }, [currentUser]);
 
   const startCamera = async () => {
@@ -222,13 +224,38 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
     setSuccessMsg("✔ ¡Éxito! Tu ubicación física actual ha sido configurada como la Sede de Trabajo.");
   };
 
+  // Tomar foto de la cámara
+  const handleTakePhoto = () => {
+    const liveCapture = captureFrame();
+    if (liveCapture) {
+      setPhotoTaken(true);
+      setReniecQueryState('foto');
+      triggerToast('Foto capturada. Listo para verificar con RENIEC.', 'success');
+    } else {
+      setReniecError('No se pudo capturar la imagen. Intente habilitar la cámara primero.');
+    }
+  };
+
   // Verificación Biométrica real (Simulación de integración con Gemini API)
   const handleReniecVerification = async () => {
     const targetDni = currentUser.dni || '74829412';
-    const liveCapture = captureFrame(); // Tomamos la foto en el momento
+
+    // Si no hay foto tomada, solicitar tomarla
+    if (!photoTaken) {
+      const liveCapture = captureFrame();
+      if (liveCapture) {
+        setPhotoTaken(true);
+        setReniecQueryState('foto');
+        triggerToast('Foto tomada. Presione nuevamente para verificar.', 'info');
+        return;
+      }
+      setReniecError('Active la cámara y tome una foto primero.');
+      return;
+    }
+
     setReniecError(null);
     setMatchedWithReniec(false);
-    setReniecQueryState('conectar');
+    setReniecQueryState('comparar');
 
     // Fase 1: Conexión segura
     await new Promise(resolve => setTimeout(resolve, 800));
@@ -311,9 +338,26 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
     }, 1600);
   };
 
-  return (
+return (
     <div id="marcacion-screen" className="flex flex-col gap-4 max-w-lg mx-auto w-full px-4 py-1">
-      
+
+      {/* Header with border */}
+      <header className="bg-dark-bg/90 backdrop-blur-md border-b-2 border-primary/50 rounded-b-xl p-3 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Fingerprint className="w-5 h-5 text-primary" />
+          <h2 className="text-xs font-black uppercase tracking-wider text-white">
+            VERIFICACIÓN BIOMÉTRICA
+          </h2>
+</div>
+        <button
+            onClick={handleReniecVerification}
+            disabled={isAlreadyMarkedToday || isScanning || (!webcamEnabled && reniecQueryState !== 'idle')}
+            className="px-3 py-1.5 bg-primary/20 hover:bg-primary/30 border border-primary/50 rounded-lg text-[9px] font-bold uppercase tracking-widest text-primary disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+          >
+            {!webcamEnabled ? 'HABILITAR CÁMARA' : reniecQueryState === 'foto' ? 'VERIFICAR RENIEC' : reniecQueryState === 'comparar' || reniecQueryState === 'match' ? 'PROCESANDO...' : 'LISTO PARA VERIFICAR'}
+          </button>
+      </header>
+
       {/* 1. Daily marking enforcement barrier */}
       {isAlreadyMarkedToday && (
         <div className="bg-warning/10 border border-warning/40 rounded-xl p-3.5 text-center flex flex-col items-center gap-2 animate-fadeIn">
@@ -406,14 +450,15 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
             </div>
           </div>
 
-          {!matchedWithReniec && reniecQueryState === 'idle' && (
+          {/* Botón para iniciar verificación después de habilitar cámara */}
+          {webcamEnabled && !matchedWithReniec && reniecQueryState === 'conectar' && (
             <button
               type="button"
               onClick={handleReniecVerification}
               disabled={isAlreadyMarkedToday || isScanning}
               className="w-full mt-1.5 py-3 bg-success/10 hover:bg-success/20 text-success border border-success/30 hover:border-success/60 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(0,255,65,0.05)] active:scale-[0.983]"
             >
-              🔬 INICIAR COMPARACIÓN BIOMÉTRICA CON DEPARTAMENTO SUNAT
+              🔬 INICIAR COMPARACIÓN CON FOTO RENIEC
             </button>
           )}
         </div>
@@ -550,7 +595,7 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
         </div>
 
         {/* Scan controllers & Info */}
-        <div className="mt-3.5 flex flex-col items-center gap-1">
+        <div className="mt-3.5 flex flex-col items-center gap-2">
           <div className="flex gap-2 items-center">
             <div className="flex items-center gap-1.5 px-3 py-1 bg-[#121212] rounded-full border border-white/10">
               <span className={`w-1.5 h-1.5 rounded-full ${isScanning ? 'bg-warning animate-pulse' : matchedWithReniec ? 'bg-success' : 'bg-rose-500'}`} />
@@ -558,16 +603,33 @@ export default function MarcacionScreen({ currentUser, records, onRegisterSucces
                 {isScanning ? 'PROCESANDO VECTORES...' : matchedWithReniec ? 'CONCORDANCIA BIOMÉTRICA CONFIRMADA' : 'FALTA VERIFICAR IDENTIDAD'}
               </p>
             </div>
-
-            <button 
-              onClick={toggleWebcam}
-              disabled={isAlreadyMarkedToday}
-              className={`p-1 rounded-full border transition-all ${useWebcam ? 'bg-primary border-primary text-white shadow' : 'bg-[#121212] border-white/10 text-white/40 hover:bg-white/5'}`}
-              title="Disparar camara real / simulador"
-            >
-              <Camera className="w-3 h-3" />
-            </button>
           </div>
+
+          {/* Botón para tomar foto */}
+          {webcamEnabled && !photoTaken && (
+            <button
+              onClick={handleTakePhoto}
+              disabled={isAlreadyMarkedToday || isScanning}
+              className="px-4 py-2 bg-success hover:bg-success/80 text-black rounded-lg text-[9px] font-black uppercase tracking-widest flex items-center gap-1.5 transition-colors"
+            >
+              <Camera className="w-3.5 h-3.5" />
+              TOMAR FOTO
+            </button>
+          )}
+
+          {/* Botón para volver a tomar foto si ya se tomó una */}
+          {photoTaken && !matchedWithReniec && (
+            <button
+              onClick={() => {
+                setPhotoTaken(false);
+                setReniecQueryState('idle');
+              }}
+              disabled={isAlreadyMarkedToday || reniecQueryState === 'comparar'}
+              className="px-3 py-1 bg-warning/20 hover:bg-warning/30 text-warning rounded-lg text-[8px] font-bold uppercase tracking-widest"
+            >
+              🔄 Repetir captura
+            </button>
+          )}
         </div>
       </section>
 
