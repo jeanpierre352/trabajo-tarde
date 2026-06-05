@@ -1,0 +1,6 @@
+{
+  "name": "Control de Asistencia",
+  "description": "Aplicación para el control y reporte de asistencia laboral con validación biométrica y geolocalización.",
+  "requestFramePermissions": ["camera", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

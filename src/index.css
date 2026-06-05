@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #2200FF;
+  --color-success: #00FF41;
+  --color-warning: #FFBF00;
+  --color-dark-bg: #050505;
+}
+
+/* Custom animation effects matching native biometrics */
+@keyframes pulse-green {
+  0% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.4);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(0, 255, 65, 0);
+  }
+  100% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(0, 255, 65, 0);
+  }
+}
+
+@keyframes scan {
+  0%, 100% {
+    top: 10%;
+  }
+  50% {
+    top: 90%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hide scrollbars elegantly */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom styling presets for Bold Typography */
+.text-glow {
+  text-shadow: 0 0 10px rgba(34, 0, 255, 0.4);
+}
+.neon-border {
+  border-color: rgba(34, 0, 255, 0.25);
+}
+.neon-border-active {
+  border-color: #2200FF;
+}
+
